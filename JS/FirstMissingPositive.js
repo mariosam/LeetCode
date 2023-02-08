@@ -9,20 +9,28 @@
  * @return {number}
  */
 function firstMissingPositive(nums) {
-    nums = nums.filter((el, i) => nums.indexOf(el) === i);
     nums.sort(function(a, b) { return a - b; });
-    let i = 1;
+    let l = nums.length;
+	let start = -1;
 
-    nums.forEach(function(num){
-        if ( num > 0 ) {
-            if ( num == i ) {
-                i++;
-            } else {
-                return i;
-            }
-        }
-    });
-    
-    return i;
+    for ( let i = 0; i < l; i++ ) {
+		if ( nums[i] > 0 ) {
+			start = i;
+			break;
+		}
+	}
+	if ( start == -1 ) return 1;
+
+	let currentL = l - start;
+	if ( currentL == 0 ) return 1;
+	if ( nums[start] > 1 ) return 1;
+
+	for ( let i = start; i < l-1; i++ ) {
+		if ( nums[i+1]-nums[i] > 1 ) {
+			return nums[i] + 1;
+		}
+	}
+
+	return nums[l-1] + 1;
 }
 export { firstMissingPositive }
