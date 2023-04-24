@@ -10,15 +10,12 @@
  * @return {boolean}
  */
 function isIsomorphic(s, t) {
-    let sMap = [];
-    let tMap = [];
-
     for ( let i=0; i < s.length; i++ ) {
-        if ( sMap[t[i]] != tMap[s[i]] ) return false;
-        sMap[t[i]] = i + 1;
-        tMap[s[i]] = i + 1;
+        if ( s.indexOf(s.charAt(i) ) != t.indexOf(t.charAt(i)) ){
+            return false;
+        }
     }
-
+    
     return true;
 }
 export { isIsomorphic }
