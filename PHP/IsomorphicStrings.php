@@ -14,17 +14,13 @@ class IsomorphicStrings {
      * @return Boolean
      */
     function isIsomorphic($s, $t) {
-        $sMap = [];
-        $tMap = [];
-
         for ( $i=0; $i < strlen($s); $i++ ) {
-            if ( $sMap[$t[$i]] != $tMap[$s[$i]] ) return false;
-            $sMap[$t[$i]] = $i + 1;
-            $tMap[$s[$i]] = $i + 1;
+            if ( strpos($s, $s[$i]) != strpos($t, $t[$i]) ) {
+                return false;
+            }
         }
-
+        
         return true;
     }
 
 }
-
