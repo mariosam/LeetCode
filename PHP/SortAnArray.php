@@ -13,29 +13,31 @@ class SortAnArray {
      * @return Integer[]
      */
     function sortArray($nums) {
-        if ( count($nums) < 2 ) return $nums;
-    
-        $lesser = 0;
-        $greater = count($nums)-1;
-        $pivot = rand.Intn(count($nums));
+        $arr = array_fill(0, 50001, array(0, 0));
+        $ans = array();
 
-        $nums[$pivot] = $nums[$greater];
-        $nums[$greater] = $nums[$pivot];
+        foreach ($nums as $num) {
+            $n = $num;
+            $s = 1;
+            if ($n < 0) {
+                $n *= -1;
+                $s--;
+            }
+            $arr[$n][$s]++;
+        }
 
-        for ( $i=0; $i < count($nums); $i++ ) {
-            if ( $nums[$i] < $nums[$greater] ) {
-                $nums[$lesser] = $nums[$i];
-                $nums[$i] = $nums[$lesser];
-                $lesser++;
+        for ($i = 50000; $i >= 0; $i--) {
+            for ($j = $arr[$i][0]; $j > 0; $j--) {
+                array_push($ans, $i * -1);
             }
         }
-    
-        $nums[$lesser] = $nums[$greater];
-        $nums[$greater] = $nums[$lesser];
 
-        sortArray($nums[$lesser]);
-        sortArray($nums[$lesser+1]);
-    
-        return $nums;
+        for ($i = 0; $i <= 50000; $i++) {
+            for ($j = $arr[$i][1]; $j > 0; $j--) {
+                array_push($ans, $i);
+            }
+        }
+
+        return $ans;
     }
 }
