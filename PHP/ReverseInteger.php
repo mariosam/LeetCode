@@ -13,17 +13,23 @@ class ReverseInteger {
      * @return Integer
      */
     function reverse($x) {
-        $result = 0;
+        $rev = 0;
 
-        while ( $x != 0 ) {
+        while ($x != 0) {
             $pop = $x % 10;
-            $x /= 10;
-            if ( $result > PHP_INT_MAX/10 || ( $result == PHP_INT_MAX/10 && $pop > 7 ) ) return 0;
-            if ( $result < PHP_INT_MIN/10 || ( $result == PHP_INT_MIN/10 && $pop < -8 ) ) return 0;
-            $result = $result*10 + $pop;
+            $x = (int) ($x / 10);
+            
+            if ($rev > (int)(PHP_INT_MAX / 10) || ($rev === (int)(PHP_INT_MAX / 10) && $pop > 7)) {
+                return 0;
+            }
+            if ($rev < (int)(PHP_INT_MIN / 10) || ($rev === (int)(PHP_INT_MIN / 10) && $pop < -8)) {
+                return 0;
+            }
+            
+            $rev = $rev * 10 + $pop;
         }
 
-        return $result;
+        return $rev;
     }
 
 }
