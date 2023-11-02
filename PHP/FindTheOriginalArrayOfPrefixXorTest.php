@@ -1,0 +1,28 @@
+<?php
+/**
+ * @version PHP 8.2.0
+ * @author MARIO SAM <eu@mariosam.com.br>
+ * @see I would love to work with you instead solving web code tests: hire me!
+ * $ ./vendor/bin/phpunit FindTheOriginalArrayOfPrefixXorTest.php
+ */
+namespace PHP;
+
+use PHPUnit\Framework\TestCase;
+require ("FindTheOriginalArrayOfPrefixXor.php");
+
+class FindTheOriginalArrayOfPrefixXorTest extends TestCase {
+
+    public function testFindTheOriginalArrayOfPrefixXor() {
+        $obj = new FindTheOriginalArrayOfPrefixXor();
+        //Test 1
+        $want = [5,7,2,3,2];
+        $got = $obj->findArray( [5,2,0,3,1] );
+        echo "\nTest 1: retornou " . implode($got) . " == esperado: " . implode($want);
+        $this->assertEquals($want, $got);
+        //Test 2
+        $want = [13];
+        $got = $obj->findArray( [13] );
+        echo "\nTest 2: retornou " . implode($got) . " == esperado: " . implode($want);
+        $this->assertEquals($want, $got);
+    }
+}
