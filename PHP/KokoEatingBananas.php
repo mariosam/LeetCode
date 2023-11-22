@@ -14,36 +14,28 @@ class KokoEatingBananas {
      * @return Integer
      */
     function minEatingSpeed($piles, $h) {
-        $l = 1;
-        $r = (int) Pow(10, 9);
+        $right = max($piles);
+        $left = 1;
 
-        while ( $l <= $r ) {
-            $mid = ($l+$r)/2;
-            if ( $this->canEat($piles, $mid, $h) ) {
-                $r = $mid-1;
+        while ($left < $right) {
+            $mid = $left + (($right - $left) >> 1);
+            if ($this->getTime($piles, $mid) <= $h) {
+                $right = $mid;
             } else {
-                $l = $mid+1;
+                $left = $mid + 1;
             }
         }
 
-        return $l;
+        return $left;
     }
 
-    function canEat($piles, $mid, $h) {
-        $result = 0;
-
-        for ( $i=0; $i < count($piles); $i++ ) {
-            $temp = $piles[$i]/$mid;
-            $result = $result + (int) Ceil($temp);
-            if ( $result > $h ) {
-                return false;
-            }
+    function getTime($piles, $v) {
+        $time = 0;
+    
+        foreach ($piles as $p) {
+            $time += ceil($p / $v);
         }
-        
-        if ( $result <= $h ) {
-            return true;
-        }
-
-        return false;
+    
+        return $time;
     }
 }
