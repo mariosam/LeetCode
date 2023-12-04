@@ -1,16 +1,14 @@
 /**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
+ * @version JAVASCRIPT ECMAScript 6
+ * @author MARIO SAM <eu@mariosam.com.br>
+ * @see I would love to work with you instead solving web code tests: hire me!
  */
+
 /**
  * @param {number} n
  * @return {TreeNode[]}
  */
-var allPossibleFBT = function(n) {
+function allPossibleFBT(n) {
     const f = new Array(n + 1).fill().map(() => []);
 
     function dfs(n) {
@@ -39,4 +37,14 @@ var allPossibleFBT = function(n) {
     }
 
     return dfs(n);
-};
+}
+
+/**
+ * Definition for a binary tree node.
+ */
+function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}
+export { allPossibleFBT }
