@@ -22,7 +22,7 @@ func TestFindTheLengthOfTheLongestCommonPrefix(t *testing.T) {
 	}
 
 	for _, table := range tables {
-		got := longestCommonPrefix2(table.word, table.look)
+		got := longestCommonPrefix(table.word, table.look)
 
 		if !reflect.DeepEqual(got, table.want) {
 			t.Errorf("Waiting for this %d but the return was this: %d", table.want, got)
