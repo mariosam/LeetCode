@@ -15,14 +15,14 @@ class LexicographicalNumbersTest extends TestCase {
     public function testLexicographicalNumbers() {
         $obj = new LexicographicalNumbers();
         //Test 1
-        $want = 13;
-        $got = $obj->lexicalOrder( [1,10,11,12,13,2,3,4,5,6,7,8,9] );
-        echo "\nTest 1: retornou " . $got . " == esperado: " . $want;
+        $want = [1,10,11,12,13,2,3,4,5,6,7,8,9];
+        $got = $obj->lexicalOrder( 13 );
+        echo "\nTest 1: retornou " . implode($got) . " == esperado: " . implode($want);
         $this->assertEquals($want, $got);
         //Test 2
-        $want = 2;
-        $got = $obj->lexicalOrder( [1,2] );
-        echo "\nTest 2: retornou " . $got . " == esperado: " . $want;
+        $want = [1,2];
+        $got = $obj->lexicalOrder( 2 );
+        echo "\nTest 2: retornou " . implode($got) . " == esperado: " . implode($want);
         $this->assertEquals($want, $got);
     }
 }
