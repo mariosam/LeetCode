@@ -13,13 +13,14 @@ import (
 
 func TestFindAllKDistantIndicesInAnArray(t *testing.T) {
 	tables := []struct {
-		want  []int
+		want []int
 		nums []int
-		key int
-		k int
+		key  int
+		k    int
 	}{
-		{[]int{1,2,3,4,5,6}, []int{3,4,9,1,3,9,5}, 9, 1},
-		{[]int{0,1,2,3,4}, []int{2,2,2,2,2}, 2, 2},
+		{[]int{1, 2, 3, 4, 5, 6}, []int{3, 4, 9, 1, 3, 9, 5}, 9, 1},
+		{[]int{0, 1, 2, 3, 4}, []int{2, 2, 2, 2, 2}, 2, 2},
+	}
 
 	for _, table := range tables {
 		got := findKDistantIndices(table.nums, table.key, table.k)
