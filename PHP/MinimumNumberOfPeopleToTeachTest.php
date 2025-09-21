@@ -16,12 +16,12 @@ class MinimumNumberOfPeopleToTeachTest extends TestCase {
         $obj = new MinimumNumberOfPeopleToTeach();
         //Test 1
         $want = 1;
-        $got = $obj->minimumTeachings([[1],[2],[1,2]], [[1,2],[1,3],[2,3]]);
+        $got = $obj->minimumTeachings(2, [[1],[2],[1,2]], [[1,2],[1,3],[2,3]]);
         echo "\nTest 1: retornou " . $got . " == esperado: " . $want;
         $this->assertEquals($want, $got);
         //Test 2
         $want = 2;
-        $got = $obj->minimumTeachings([[2],[1,3],[1,2],[3]], [[1,4],[1,2],[3,4],[2,3]]);
+        $got = $obj->minimumTeachings(3, [[2],[1,3],[1,2],[3]], [[1,4],[1,2],[3,4],[2,3]]);
         echo "\nTest 2: retornou " . $got . " == esperado: " . $want;
         $this->assertEquals($want, $got);
     }
