@@ -10,7 +10,7 @@ namespace PHP;
 use PHPUnit\Framework\TestCase;
 require ("AdjacentIncreasingSubarraysDetectionII.php");
 
-class AAdjacentIncreasingSubarraysDetectionIITest extends TestCase {
+class AdjacentIncreasingSubarraysDetectionIITest extends TestCase {
 
     public function testAdjacentIncreasingSubarraysDetectionII() {
         $obj = new AdjacentIncreasingSubarraysDetectionII();
