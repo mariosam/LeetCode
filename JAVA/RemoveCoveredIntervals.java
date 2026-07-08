@@ -1,0 +1,35 @@
+/**
+ * @version JAVA
+ * @author MARIO SAM <eu@mariosam.com.br>
+ * @see I would love to work with you instead solving web code tests: hire me!
+ */
+package JAVA;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class RemoveCoveredIntervals {
+
+    public static void main(String[] args) {
+        int[][] intervals = {{1, 4}, {3, 6}, {2, 8}};
+        System.out.printf("Resultado: %d\n", removeCoveredIntervals(intervals));
+    }
+
+    public static int removeCoveredIntervals(int[][] intervals) {
+        Arrays.sort(intervals, Comparator.comparingInt((int[] interval) -> interval[0])
+                               .thenComparingInt((int[] interval) -> - interval[1]));
+
+        int ans = 0;
+        int prevEnd = 0;
+
+        for (int[] interval : intervals)
+        // The current interval is not covered by the previous one.
+        if (prevEnd < interval[1]) {
+            prevEnd = interval[1];
+            ++ans;
+        }
+
+        return ans;
+    }
+
+}
